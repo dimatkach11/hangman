@@ -11,6 +11,10 @@
   color: black;
 }
 
+.btn:disabled {
+  cursor: auto;
+}
+
 .btn.active {
   background-color: hsl(200, 100%, 50%);
   color: white;

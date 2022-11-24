@@ -1,8 +1,16 @@
 import { FC } from 'react'
 
-const HangmanWord: FC = () => {
-  const word = 'test'
-  const guessedLetters = ['e', 't']
+type HangmanWordProps = {
+  guessedLetters: string[]
+  wordToGuess: string
+  reveal?: boolean
+}
+
+const HangmanWord: FC<HangmanWordProps> = ({
+  guessedLetters,
+  wordToGuess,
+  reveal = false,
+}) => {
   return (
     <div
       style={{
@@ -14,7 +22,7 @@ const HangmanWord: FC = () => {
         fontFamily: 'monospace',
       }}
     >
-      {word.split('').map((letter, index) => (
+      {wordToGuess.split('').map((letter, index) => (
         <span
           key={index}
           style={{
@@ -23,7 +31,10 @@ const HangmanWord: FC = () => {
         >
           <span
             style={{
-              visibility: guessedLetters.includes(letter) ? 'visible' : 'hidden',
+              visibility: (guessedLetters.includes(letter) || reveal)
+                ? 'visible'
+                : 'hidden',
+              color: reveal && !guessedLetters.includes(letter) ? 'red' : 'black'
             }}
           >
             {letter}

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 const HEAD = (
-  <div
+  <div key={1}
     style={{
       width: '50px',
       height: '50px',
@@ -15,7 +15,7 @@ const HEAD = (
 )
 
 const BODY = (
-  <div
+  <div key={2}
     style={{
       width: '10px',
       height: '100px',
@@ -28,13 +28,13 @@ const BODY = (
 )
 
 const RIGHT_ARM = (
-  <div
+  <div key={3}
     style={{
       width: '100px',
       height: '10px',
       background: 'black',
       position: 'absolute',
-      
+
       top: '150px',
       right: '-100px',
       rotate: '-30deg',
@@ -44,7 +44,7 @@ const RIGHT_ARM = (
 )
 
 const LEFT_ARM = (
-  <div
+  <div key={4}
     style={{
       width: '100px',
       height: '10px',
@@ -60,13 +60,13 @@ const LEFT_ARM = (
 )
 
 const RIGHT_LEG = (
-  <div
+  <div key={5}
     style={{
       width: '120px',
       height: '10px',
       background: 'black',
       position: 'absolute',
-      
+
       top: '210px',
       right: '-110px',
       rotate: '60deg',
@@ -76,7 +76,7 @@ const RIGHT_LEG = (
 )
 
 const LEFT_LEG = (
-  <div
+  <div key={6}
     style={{
       width: '120px',
       height: '10px',
@@ -91,7 +91,20 @@ const LEFT_LEG = (
   />
 )
 
-const HangmanDrawing: FC = () => {
+const BODY_PARTS = [
+  HEAD,
+  BODY,
+  RIGHT_ARM,
+  LEFT_ARM,
+  RIGHT_LEG,
+  LEFT_LEG,
+]
+
+type HangmanDrawingProps = {
+  incorrectLetters: number
+}
+
+const HangmanDrawing: FC<HangmanDrawingProps> = ({ incorrectLetters }) => {
   return (
     <div
       style={{
@@ -99,12 +112,7 @@ const HangmanDrawing: FC = () => {
       }}
     >
       {/* hangman dinamic parts */}
-      {HEAD}
-      {BODY}
-      {RIGHT_ARM}
-      {LEFT_ARM}
-      {RIGHT_LEG}
-      {LEFT_LEG}
+      {BODY_PARTS.slice(0, incorrectLetters)}
 
       {/* vertical top absolute bar */}
       <div
