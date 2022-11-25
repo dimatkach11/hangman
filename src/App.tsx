@@ -9,7 +9,7 @@ import Tips from './components/Tips'
 const options = {
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': 'db51b3ac3emsh60e308e13e4eb3bp1ea6dcjsn7ef77889cceb',
+    'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY,
     'X-RapidAPI-Host': 'lexicala1.p.rapidapi.com',
   },
 }
